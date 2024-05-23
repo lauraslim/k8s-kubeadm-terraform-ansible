@@ -84,7 +84,7 @@ sudo chown $(id -u):$(id -g) /root/.kube/config
 export KUBECONFIG=/etc/kubernetes/admin.conf
 
 #deploy weavenet pod networking:Install any CNI plugin. We will use weavenet
-kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset.k8s.yaml
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/bc79dd1505b0c8681ece4de4c0d86c5cd2643275/Documentation/kube-flannel.yml
 
 #create file with join command
 echo `kubeadm token create --print-join-command` > ./join-command.sh
