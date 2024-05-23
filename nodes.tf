@@ -3,7 +3,7 @@ resource "aws_instance" "k8s_master" {
   ami             = var.ami.master
   instance_type   = var.instance_type["master"]
   key_name        = aws_key_pair.k8s_kubeadmn.key_name #attach our key pair to our instance
-  security_groups = [aws_security_group.master]
+  security_groups = ["aws_security_group.master"]
   #attach our security groups to ourcontrol plane instance
 
   tags = {
@@ -43,7 +43,7 @@ resource "aws_instance" "k8s_workers" {
   ami             = var.ami.workers
   instance_type   = var.instance_type["workers"]
   key_name        = aws_key_pair.k8s_kubeadmn.key_name #attach our key pair to our instance
-  security_groups = [aws_security_group.workers]
+  security_groups = ["aws_security_group.workers"]
   #attach our security groups to ourcontrol plane instance
 
   tags = {
