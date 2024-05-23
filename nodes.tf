@@ -3,7 +3,7 @@ resource "aws_instance" "k8s_master" {
   ami             = var.ami["master"]
   instance_type   = var.instance_type["master"]
   key_name        = aws_key_pair.k8s_kubeadmn.key_name #attach our key pair to our instance
-  security_groups = ["aws_security_group.master"]
+  security_groups = ["master_sg"]
   #attach our security groups to ourcontrol plane instance
 
   tags = {
@@ -27,7 +27,7 @@ resource "aws_instance" "k8s_master" {
   provisioner "remote-exec" {
     inline = [
       "chmod +x /home/ubuntu/master.sh ",
-      "sudo sh /home/ubuntu/master.sh k8s-master"
+      "sudo sh /home/ubuntu/master.sh k8s-maste"
     ]
   }
   provisioner "local-exec" {
@@ -43,7 +43,7 @@ resource "aws_instance" "k8s_workers" {
   ami             = var.ami.workers
   instance_type   = var.instance_type["workers"]
   key_name        = aws_key_pair.k8s_kubeadmn.key_name #attach our key pair to our instance
-  security_groups = ["aws_security_group.workers"]
+  security_groups = ["workers_sg"]
   #attach our security groups to ourcontrol plane instance
 
   tags = {
@@ -69,7 +69,7 @@ resource "aws_instance" "k8s_workers" {
   provisioner "remote-exec" {
     inline = [
       "chmod +x /home/ubuntu/worker.sh ",
-      "sudo sh /home/ubuntu/worker.sh k8s-workers-${count.index}",
+      "sudo sh /home/ubuntu/worker.sh k8s-work-${count.index}",
       "sudo sh /home/ubuntu/join-command.sh"
     ]
   }
