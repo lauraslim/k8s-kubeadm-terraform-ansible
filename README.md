@@ -53,3 +53,11 @@ sudo snap install aws-cli --classic
  aws --version
 # Configure AWS CLI
 aws configure
+
+# after writing all your files(we are working here in git bash terminal)
+type terraform fmt to format your files
+then, git init
+git add -A or git add .
+go to github and create a new public repository without a readme file
+copy the git remote command from your newly repository and paste it in your git bash terminal working directory
+then git push origin master and check your new repo on github
