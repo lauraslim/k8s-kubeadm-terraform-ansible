@@ -1,0 +1,11 @@
+#go to https://docs.ansible.com/ansible/latest/collections/ansible/builtin/fetch_module.html#examples
+#flat:yes this means that we want the join-command.sh to be created here in this directory
+- hosts: all
+  name: fetch join token file
+  gather_facts: false
+  tasks:
+  - name: fetch join token file
+    ansible.builtin.fetch:
+      src: /home/ubuntu/join-command.sh
+      dest: ./join-command.sh
+      flat: yes
