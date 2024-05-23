@@ -1,6 +1,6 @@
 #master node creation
 resource "aws_instance" "k8s_master" {
-  ami             = var.ami.master
+  ami             = var.ami["master"]
   instance_type   = var.instance_type["master"]
   key_name        = aws_key_pair.k8s_kubeadmn.key_name #attach our key pair to our instance
   security_groups = ["aws_security_group.master"]
