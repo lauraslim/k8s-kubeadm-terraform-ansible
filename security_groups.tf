@@ -179,6 +179,21 @@ resource "aws_security_group" "workers" {
     ipv6_cidr_blocks = ["::/0"]
   }
 
+  ingress{
+    description = "udp backend"
+    from_port        = 8285
+    protocol         = "udp"
+    to_port          = 8285
+    cidr_blocks      =   ["0.0.0.0/0"]  
+}
+  ingress{
+    description = "udp vxlan backend"
+    from_port        = 8472
+    protocol         = "udp"
+    to_port          = 8472
+    cidr_blocks      =   ["0.0.0.0/0"]
+}
+
 
   tags = {
     Name = "workers_sg"
