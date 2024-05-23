@@ -16,7 +16,7 @@ resource "aws_instance" "k8s_master" {
   connection {
     type        = "ssh"
     user        = "ubuntu"
-    private_key = file(k8s_kubeadmn)
+    private_key = file("k8s_kubeadmn")
     host        = self.public_ip
   }
 
@@ -53,7 +53,7 @@ resource "aws_instance" "k8s_workers" {
   connection {
     type        = "ssh"
     user        = "ubuntu"
-    private_key = file(k8s_kubeadmn)
+    private_key = file("k8s_kubeadmn")
     host        = self.public_ip
   }
 
