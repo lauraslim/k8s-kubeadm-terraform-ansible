@@ -5,11 +5,6 @@ terraform {
       version = "~> 5.0"
     }
 
-    #ansible provider
-    ansible = {
-      version = "~> 1.3.0"
-      source  = "ansible/ansible"
-    }
   }
 }
 
